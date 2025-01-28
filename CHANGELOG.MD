@@ -1,3 +1,30 @@
+1.0.0
+=
+
+
+1.0.0+RC.3
+=
+
+_Added:_
+
+* Clinging To Life Advancement 
+
+_Fixed:_
+
+* Pale Vines now behave as expected_
+
+1.0.0+RC.2
+=
+
+_Added:_
+
+* Pale Axolotl Bucket
+* You're My Friend Now Advancement 
+
+_Fixed:_
+
+* Fixed double Pale World Advancement
+
 1.0.0+RC.1
 =
 
@@ -12,7 +39,7 @@ _Added:_
 _Changed:_
 
 * Updated Pale Axolotl texture
-* 
+
 
 
 1.0.0+Beta.4

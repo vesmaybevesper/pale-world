@@ -16,18 +16,17 @@ TO-DO:
   - ~~Fix Big Dripleaf Loot Table~~
   - ~~Adjust Dripleaf spawn rates~~
   - ~~Fix Big Dripleaf Particles~~
-  - Add Custom Biome Ambiance(?)
   - ~~Add Pale Axolotl~~
   - ~~Pale Axolotl Animations~~
   - ~~Update Pale Axolotl texture~~
   - ~~Pale Axolotl Spawn Egg~~
-  - Advancement tab vs taking whole menu
-  - Make better Pale Axolotl behavior 
-  - Make Pale Vines the correct type of block
+  - ~~Make better Pale Axolotl behavior~~ 
+  - ~~Make Pale Vines the correct type of block~~
   - Vampire Bat?
+  - Add Custom Biome Ambiance(?)
 
 
-- BEFORE RC 1
-  - ~~Pale Axolotl Spawn Egg~~
-  - Advancement tab vs taking whole menu
-  - Make Pale Vines the correct type of block
+- V2.0.0
+  - Stripped Pale Trees in Pale Garden
+  - New Flowers
+  - 
