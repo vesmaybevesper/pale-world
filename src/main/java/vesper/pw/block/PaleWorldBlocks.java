@@ -36,7 +36,7 @@ public class PaleWorldBlocks {
                     .noCollision()
                     .sounds(BlockSoundGroup.CAVE_VINES)
                     .ticksRandomly()
-                    .luminance(state -> 7)
+                    .luminance(PaleVines.getLuminanceSupplier(7))
                     .breakInstantly()
                     .mapColor(MapColor.GRAY)
                     .pistonBehavior(PistonBehavior.DESTROY)
@@ -50,7 +50,7 @@ public class PaleWorldBlocks {
                     .noCollision()
                     .sounds(BlockSoundGroup.CAVE_VINES)
                     .ticksRandomly()
-                    .luminance(state -> 7)
+                    .luminance(PaleVines.getLuminanceSupplier(7))
                     .breakInstantly()
                     .mapColor(MapColor.GRAY)
                     .pistonBehavior(PistonBehavior.DESTROY)
@@ -89,8 +89,8 @@ public class PaleWorldBlocks {
                     .pistonBehavior(PistonBehavior.DESTROY)
                     .requiresTool()
     ));
-    public static final Block PETRIFIED_WOOD = regBlock("petrified_wood", new Block(AbstractBlock.Settings.create().registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "petrified_wood")))
-            .mapColor(MapColor.SPRUCE_BROWN).sounds(BlockSoundGroup.WOOD).burnable().hardness(7).requiresTool().pistonBehavior(PistonBehavior.NORMAL)));
+    public static final Block PETRIFIED_PALE_OAK = regBlock("petrified_pale_oak", new Block(AbstractBlock.Settings.create().registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "petrified_pale_oak")))
+            .mapColor(MapColor.WHITE_GRAY).sounds(BlockSoundGroup.WOOD).burnable().hardness(7).requiresTool().pistonBehavior(PistonBehavior.NORMAL)));
 
     public static final Block DYING_AZALEA = regBlock(
             "dying_azalea",
@@ -134,7 +134,7 @@ public class PaleWorldBlocks {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.SEARCH).register(fabricItemGroupEntries -> {
             fabricItemGroupEntries.add(PALE_VINE);
             fabricItemGroupEntries.add(PALE_VINE_BODY);
-            fabricItemGroupEntries.add(PETRIFIED_WOOD);
+            fabricItemGroupEntries.add(PETRIFIED_PALE_OAK);
             fabricItemGroupEntries.add(BIG_DYING_DRIPLEAF_STEM);
             fabricItemGroupEntries.add(BIG_DYING_DRIPLEAF);
             fabricItemGroupEntries.add(DYING_AZALEA);

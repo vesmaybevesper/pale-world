@@ -1,5 +1,61 @@
+1.1.1
+=
+
+_Changed:_
+
+* Changed Vampire Bat circling behaviour
+* Changed Vampire Bat Movement speed from 1.5 to 2
+* Changed Vampire Bat follow range from 25 to 35
+* Updated icon
+
+
+
+1.1.0
+=
+
+_Added:_
+
+* Vampire Bat
+  * _"Awww how cu- OW!"_
+  * This tiny hunter spawns in the Pale Caves, be careful to keep your distance otherwise it might bite you!
+
+* Pale Berries
+  * _"I wouldn't eat that..."_
+  * Turns out the Pale Vines can still grow berries, they don't look that good though.
+    * Gives 2 Hunger & 0.1 Saturation
+    * Applies Blindness for 30 seconds on consumption
+
+_Changed:_
+
+* TerraBlender is now included
+* Increased Pale Axolotl Spawn Weight
+* Pale Vine Luminance is now tied to each block's berry state
+
+_Fixed:_
+
+* Pale Axolotl Spawn Egg Texture
+* Pale Axolotl's no longer get stuck when trying to exit the water
+
+
 1.0.0
 =
+# The Pale Cave
+
+### What happens when the last of the nutrients fade from a Lush Cave?
+
+## Added
+
+- The Pale Cave Biome
+- Pale Axolotl
+  ![A Pale Axolotl Sitting In A Pale Cave](https://cdn.modrinth.com/data/cached_images/b8e3b0d3a23e969fc8fc1979d412d0baee66bb6a.jpeg)
+- Pale Vines
+- Big Dying Dripleaf
+- Small Dying Dripleaf
+- Dying Azalea
+- Advancements
+  - Pale World
+  - Clinging To Life
+  - You're My Friend Now
 
 
 1.0.0+RC.3
@@ -11,7 +67,7 @@ _Added:_
 
 _Fixed:_
 
-* Pale Vines now behave as expected_
+* Pale Vines now behave as expected
 
 1.0.0+RC.2
 =

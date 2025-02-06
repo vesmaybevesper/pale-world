@@ -71,6 +71,21 @@ public class Advancements extends FabricAdvancementProvider {
                 .criterion("pale_axolotl_bucketed", InventoryChangedCriterion.Conditions.items(PaleWorldItems.PALE_AXOLOTL_BUCKET))
                 .build(consumer, PaleWorld.MOD_ID + "/bucket_pale_axolotl");
 
+        AdvancementEntry eatPaleBerries = Advancement.Builder.create()
+                .parent(root)
+                .display(
+                        PaleWorldItems.PALE_BERRIES,
+                        Text.translatable("That Can't Be Healthy"),
+                        Text.translatable("Eat all the Pale World food items"),
+                        null,
+                        AdvancementFrame.TASK,
+                        true,
+                        true,
+                        false
+                )
+                .criterion("pale_berry_eaten", ConsumeItemCriterion.Conditions.item(wrapperLookup.getOrThrow(RegistryKeys.ITEM), PaleWorldItems.PALE_BERRIES))
+                .build(consumer, PaleWorld.MOD_ID + "/eat_pale_berry");
+
 
     }
 }

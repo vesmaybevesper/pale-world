@@ -1,33 +1,51 @@
 package vesper.pw.block.custom;
 
 import com.mojang.serialization.MapCodec;
-import net.fabricmc.fabric.api.block.v1.FabricBlock;
 import net.minecraft.block.*;
-import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
+import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.Property;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.random.Random;
-import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 import net.minecraft.world.tick.ScheduledTickView;
 import vesper.pw.block.PaleWorldBlocks;
+import vesper.pw.item.PaleWorldItems;
 
-import static net.minecraft.block.CaveVines.BERRIES;
 
-
-public class PaleVineBodyBlock extends AbstractPlantBlock implements CaveVines{
+public class PaleVineBodyBlock extends AbstractPlantBlock implements PaleVines{
 
     public static final MapCodec<PaleVineBodyBlock> CODEC = createCodec(PaleVineBodyBlock::new);
 
-    public static final int AGE = 1;
+    public static final int AGE = 0;
+
 
 
     public PaleVineBodyBlock(AbstractBlock.Settings settings) {
         super(settings, Direction.DOWN, SHAPE, false);
+        this.setDefaultState(this.getStateManager().getDefaultState().with(BERRIES, false));
+    }
+
+    @Override
+    protected void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
+        if (!world.isClient) {world.scheduleBlockTick(pos, this, 20);}
+        super.onBlockAdded(state, world, pos, oldState, notify);
+    }
+
+    @Override
+    protected void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+        if (!PaleVines.hasBerries(state) && random.nextFloat() < 0.25F){
+            world.setBlockState(pos,state.with(BERRIES, true), 2);
+        }
+        world.scheduleBlockTick(pos, this, MathHelper.nextBetween(random, 100, 200));
     }
 
     @Override
@@ -37,8 +55,14 @@ public class PaleVineBodyBlock extends AbstractPlantBlock implements CaveVines{
 
     @Override
     protected ItemStack getPickStack(WorldView world, BlockPos pos, BlockState state, boolean includeData) {
-        return new ItemStack(PaleWorldBlocks.PALE_VINE);
+        return new ItemStack(PaleWorldItems.PALE_BERRIES);
     }
+
+    @Override
+    protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
+        return PaleVines.pickBerries(player, state, world, pos);
+    }
+
 
     @Override
     protected MapCodec<? extends AbstractPlantBlock> getCodec() {
@@ -56,8 +80,13 @@ public class PaleVineBodyBlock extends AbstractPlantBlock implements CaveVines{
     }
 
     @Override
+    protected BlockState copyState(BlockState from, BlockState to) {
+        return (BlockState) to.with(BERRIES, (Boolean) from.get(BERRIES));
+    }
+
+    @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add();
+        builder.add(BERRIES);
     }
 
     @Override
@@ -69,4 +98,10 @@ public class PaleVineBodyBlock extends AbstractPlantBlock implements CaveVines{
     public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
         world.setBlockState(pos,(BlockState) state.with(BERRIES, false), 2);
     }
+
+    @Override
+    public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state) {
+        return !(Boolean)state.get(BERRIES);
+    }
+
 }
